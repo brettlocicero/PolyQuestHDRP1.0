@@ -28,8 +28,6 @@ public class NavMeshWalkerAI : MonoBehaviour
     {
         if (!inAttack && Vector3.Distance(target.position, transform.position) > agent.stoppingDistance) 
         {
-            Vector3 dir = target.position - transform.position;
-            neckLookAt.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 8 * Time.deltaTime);
             agent.SetDestination(target.position);
             anim.SetBool("Walking", true);
             anim.SetBool("Idle", false);
@@ -40,6 +38,12 @@ public class NavMeshWalkerAI : MonoBehaviour
             anim.SetBool("Idle", true);
             anim.SetBool("Walking", false);
         }
+    }
+
+    void FixedUpdate () 
+    {
+        Vector3 dir = target.position - transform.position;
+        neckLookAt.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 20f * Time.deltaTime);
     }
 
     void OnTriggerStay (Collider col) 
@@ -60,6 +64,8 @@ public class NavMeshWalkerAI : MonoBehaviour
 
     IEnumerator PlayAttack (Attack attack) 
     {
+        Vector3 dir = target.position - transform.position;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 500f * Time.deltaTime);
         print("played " + attack._name);
         inAttack = true;
         anim.SetTrigger(attack._name);
