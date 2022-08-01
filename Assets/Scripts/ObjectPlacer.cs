@@ -26,7 +26,7 @@ public class ObjectPlacer : MonoBehaviour
             if (Physics.Raycast(pos, Vector3.down, out hit)) 
             {
                 float dist = Vector3.Distance(hit.point, pos);
-                print(dist);
+                //print(dist);
                 if (dist >= placeDistance) 
                 {
                     GameObject obj = Instantiate(placeObj, hit.point, Quaternion.LookRotation(hit.normal));
