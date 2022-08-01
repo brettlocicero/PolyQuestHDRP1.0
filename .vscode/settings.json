@@ -52,5 +52,6 @@
         "temp/":true,
         "Temp/":true
     },
+    "omnisharp.useGlobalMono":"always",
     "colorWheel.settings.workspaceColor": "hsl(236,44%,24%)"
 }
