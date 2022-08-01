@@ -40,7 +40,7 @@ public class ObjectPlacer : MonoBehaviour
     Vector3 RandomSize () 
     {
         float x = Random.Range(0.9f, 2f);
-        float y = Random.Range(0.7f, 1.5f);
+        float y = Random.Range(0.9f, 2f);
         float z = Random.Range(0.9f, 2f);
 
         return new Vector3(x, z, y);
