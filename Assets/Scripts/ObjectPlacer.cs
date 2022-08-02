@@ -8,7 +8,6 @@ public class ObjectPlacer : MonoBehaviour
     [SerializeField] float placeDistance = 30f;
     [SerializeField] float placeRadius = 15f;
     [SerializeField] int objsToPlace = 100;
-
     [SerializeField] List<GameObject> objs;
 
     public void Generate ()
@@ -29,7 +28,9 @@ public class ObjectPlacer : MonoBehaviour
                 //print(dist);
                 if (dist >= placeDistance) 
                 {
-                    GameObject obj = Instantiate(placeObj, hit.point, Quaternion.LookRotation(hit.normal));
+                    Vector3 rot = new Vector3(Random.Range(-15f, 15f), Random.Range(0f, 360f), Random.Range(-15f, 15f));
+
+                    GameObject obj = Instantiate(placeObj, hit.point, Quaternion.Euler(rot));
                     obj.transform.localScale = RandomSize();
                     objs.Add(obj);
                 }
