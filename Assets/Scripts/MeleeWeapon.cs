@@ -24,7 +24,7 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] CharacterController cc;
     [SerializeField] Animator anim;
     [SerializeField] Animation swingAnim;
-    //[SerializeField] CinemachineShake cs;
+    [SerializeField] CinemachineShake cs;
     [SerializeField] float shakeAmt = 0.5f;
     [SerializeField] float shakeTime = 0.1f;
     [SerializeField] float shakeFreq = 1f;
@@ -76,6 +76,7 @@ public class MeleeWeapon : MonoBehaviour
             StartCoroutine(SwingDebuffs());
             swingAnim.Rewind(basicAttacks[comboIndex].name);
             swingAnim.Play(basicAttacks[comboIndex].name);
+            cs.ShakeCamera(shakeAmt, shakeTime, shakeFreq, 80);
 
             comboIndex++;
             if (comboIndex >= basicAttacks.Length) comboIndex = 0;
@@ -87,8 +88,7 @@ public class MeleeWeapon : MonoBehaviour
     public void AttackRadius ()
     {
         RandomizePitch();
-        aud.PlayOneShot(comboSounds[comboIndex]);
-        //cs.ShakeCamera(shakeAmt, shakeTime, shakeFreq, 80);
+        aud.PlayOneShot(comboSounds[Random.Range(0, comboSounds.Length)]);
 
         Collider[] attackSphere = Physics.OverlapSphere(attackSphereCenter.position, attackRadius, impactLayerMask);
         List<GameObject> hitList = new List<GameObject>();
@@ -117,7 +117,7 @@ public class MeleeWeapon : MonoBehaviour
 
     void RandomizePitch () 
     {
-        aud.pitch = Random.Range(0.92f, 1.08f);
+        aud.pitch = Random.Range(0.7f, 0.9f);
     }
 
     void OnDrawGizmosSelected()

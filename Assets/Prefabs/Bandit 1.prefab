@@ -2451,7 +2451,7 @@ GameObject:
   - component: {fileID: 8073741549285204124}
   - component: {fileID: 216716974}
   - component: {fileID: 216716975}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bandit 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2514,7 +2514,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 3.06
+  m_BaseOffset: 2.57
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &8073741549285204124
@@ -2528,9 +2528,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.32
-  m_Height: 6
+  m_Height: 5.680498
   m_Direction: 1
-  m_Center: {x: 0, y: -0.35, z: 0}
+  m_Center: {x: 0, y: -0.19024897, z: 0}
 --- !u!135 &216716974
 SphereCollider:
   m_ObjectHideFlags: 0
