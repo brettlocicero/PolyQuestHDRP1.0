@@ -9,7 +9,7 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] Vector2 comboRange;
     [SerializeField] float swordSwingMin = 0.6f;
     [SerializeField] float attackRadius;
-    [SerializeField] float damage = 20f;
+    [SerializeField] int damage = 20;
     [SerializeField] Transform attackSphereCenter;
     [SerializeField] LayerMask impactLayerMask;
     [SerializeField] AudioClip[] comboSounds;
@@ -96,21 +96,16 @@ public class MeleeWeapon : MonoBehaviour
         RandomizePitch();
         aud.PlayOneShot(comboSounds[Random.Range(0, comboSounds.Length)]);
 
-        Collider[] attackSphere = Physics.OverlapSphere(attackSphereCenter.position, attackRadius, impactLayerMask);
-        List<GameObject> hitList = new List<GameObject>();
-
-        if (attackSphere.Length > 0)
+        RaycastHit hit;
+        Transform cam = Camera.main.gameObject.transform;
+        if (Physics.Raycast(cam.position, cam.forward, out hit, attackRadius, impactLayerMask)) 
         {
             GetComponent<AudioSource>().PlayOneShot(hitSound);
-        }
 
-        foreach (Collider obj in attackSphere)
-        {
-            if (!hitList.Contains(obj.gameObject))
-            {
-                obj.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
-                hitList.Add(obj.gameObject);
-            }
+            object[] data = new object[2];
+            data[0] = damage;
+            data[1] = hit.point;
+            hit.transform.gameObject.SendMessage("TakeDamage", data, SendMessageOptions.DontRequireReceiver);
         }
     }
 

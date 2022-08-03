@@ -90,7 +90,11 @@ public class FirstPersonController : MonoBehaviour
             if (input.x != 0 || input.z != 0) Footstep();
         }
         //now add the gravity to the yvelocity
-        yVelocity += gravity * Time.deltaTime;
+        else 
+        {
+            yVelocity += gravity * Time.deltaTime;
+        }
+
         move.y = yVelocity;
         move.z = move.z - zVelocity;
         //and finally move

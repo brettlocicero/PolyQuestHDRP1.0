@@ -9,6 +9,8 @@ public class NavMeshWalkerAI : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] Transform neckLookAt;
     [SerializeField] Animator anim;
+    [SerializeField] GameObject ragdollFX;
+    [SerializeField] GameObject takeDMGFX;
 
     [Header("Stats")]
     [SerializeField] float health = 30f;
@@ -73,6 +75,28 @@ public class NavMeshWalkerAI : MonoBehaviour
         yield return new WaitForSeconds(attack.attackTime);
 
         inAttack = false;
+    }
+
+    public void TakeDamage (object[] data) 
+    {
+        health -= (int)data[0];
+        Vector3 pos = (Vector3)data[1];
+
+        GameObject bloodFX = Instantiate(takeDMGFX, pos, transform.rotation);
+        Destroy(bloodFX, 1.5f);
+
+        if (health <= 0) 
+        {
+            GameObject ragdoll = Instantiate(ragdollFX, transform.position, transform.rotation);
+            Rigidbody[] childRBs = ragdoll.GetComponentsInChildren<Rigidbody>();
+
+            foreach (Rigidbody rb in childRBs) 
+            {
+                rb.AddExplosionForce(16f, pos, 5f, 2f, ForceMode.Impulse);
+            }
+
+            Destroy(gameObject);
+        }
     }
 }
 
