@@ -29,6 +29,9 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] float shakeTime = 0.1f;
     [SerializeField] float shakeFreq = 1f;
 
+    [Header("Blocking")]
+    [SerializeField] BlockingWeapon blockingWeapon;
+
     AudioSource aud;
 
     void Start () 
@@ -69,6 +72,9 @@ public class MeleeWeapon : MonoBehaviour
 
     void SwordSwing () 
     {
+        if (blockingWeapon)
+            if (blockingWeapon.blocking) return;
+
         swingCounter += Time.deltaTime;
         
         if (Input.GetMouseButtonDown(0) && swingCounter >= swordSwingMin) 

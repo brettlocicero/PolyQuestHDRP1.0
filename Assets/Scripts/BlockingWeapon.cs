@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BlockingWeapon : MonoBehaviour
 {
+    public bool blocking;
     [SerializeField] BlockState blockState;
 
     [SerializeField] FirstPersonController fpc;
@@ -46,6 +47,7 @@ public class BlockingWeapon : MonoBehaviour
             fpc.mouseSensitivity = blockingSensFactor;
             DirectionalBlocking();
             shieldGroup.alpha = 0.8f;
+            blocking = true;
         }
 
         else if (Input.GetMouseButtonUp(1))
@@ -53,6 +55,7 @@ public class BlockingWeapon : MonoBehaviour
             fpc.movementSpeed = cachedMoveSpeed;
             fpc.mouseSensitivity = cachedMouseSens;
             shieldGroup.alpha = 0f;
+            blocking = false;
         }
     }
 
