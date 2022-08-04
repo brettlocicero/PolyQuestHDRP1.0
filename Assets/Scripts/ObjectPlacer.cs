@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectPlacer : MonoBehaviour
 {
     [SerializeField] GameObject placeObj;
+    [SerializeField] bool randomRot;
     [SerializeField] float placeDistance = 30f;
     [SerializeField] float placeRadius = 15f;
     [SerializeField] int objsToPlace = 100;
@@ -28,9 +29,20 @@ public class ObjectPlacer : MonoBehaviour
                 //print(dist);
                 if (dist >= placeDistance) 
                 {
-                    Vector3 rot = new Vector3(Random.Range(-15f, 15f), Random.Range(0f, 360f), Random.Range(-15f, 15f));
+                    Quaternion quat;
+                    
+                    if (randomRot) 
+                    {
+                        Vector3 rot = new Vector3(Random.Range(-15f, 15f), Random.Range(0f, 360f), Random.Range(-15f, 15f));
+                        quat = Quaternion.Euler(rot);
+                    }
 
-                    GameObject obj = Instantiate(placeObj, hit.point, Quaternion.Euler(rot));
+                    else 
+                    {
+                        quat = Quaternion.LookRotation(hit.point);
+                    }
+
+                    GameObject obj = Instantiate(placeObj, hit.point, quat);
                     obj.transform.localScale = RandomSize();
                     objs.Add(obj);
                 }

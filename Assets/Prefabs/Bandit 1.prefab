@@ -2491,7 +2491,7 @@ MonoBehaviour:
   anim: {fileID: 7337258474159717057}
   ragdollFX: {fileID: 166013280796995489, guid: cd69b9a4310fb4e33815d075e98037e1, type: 3}
   takeDMGFX: {fileID: 8233048021482714473, guid: f2ad678848e694e1c8ea5fcb8259f9d8, type: 3}
-  health: 30
+  health: 15
   attacks:
   - _name: Bandit Attack 1
     attackTime: 1.5

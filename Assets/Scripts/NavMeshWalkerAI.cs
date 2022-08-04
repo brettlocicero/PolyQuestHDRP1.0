@@ -45,7 +45,7 @@ public class NavMeshWalkerAI : MonoBehaviour
     void FixedUpdate () 
     {
         Vector3 dir = target.position - transform.position;
-        neckLookAt.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 20f * Time.deltaTime);
+        neckLookAt.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 999f * Time.deltaTime);
     }
 
     void OnTriggerStay (Collider col) 
@@ -92,7 +92,7 @@ public class NavMeshWalkerAI : MonoBehaviour
 
             foreach (Rigidbody rb in childRBs) 
             {
-                rb.AddExplosionForce(16f, pos, 5f, 2f, ForceMode.Impulse);
+                rb.AddExplosionForce(15f, pos, 5f, 1f, ForceMode.Impulse);
             }
 
             Destroy(gameObject);
