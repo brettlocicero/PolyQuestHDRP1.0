@@ -155,7 +155,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.15
+    - _Speed: 0.05
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _StencilRef: 0
@@ -168,7 +168,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 4
     - _StencilWriteMaskGBuffer: 14
     - _StencilWriteMaskMV: 40
-    - _Strength: 0.0002
+    - _Strength: 0.00075
     - _SupportDecals: 1
     - _Surface: 0
     - _SurfaceType: 0
