@@ -50,6 +50,20 @@ public class ObjectPlacer : MonoBehaviour
         }
     }
 
+    public void TrimMissingObjs () 
+    {
+        objs.RemoveAll(item => item == null);
+    }
+
+    public void DeleteChildlessObjs () 
+    {
+        foreach (GameObject obj in objs) 
+        {
+            if (obj.transform.childCount == 0) 
+                DestroyImmediate(obj);
+        }
+    }
+
     Vector3 RandomSize () 
     {
         float x = Random.Range(0.9f, 2f);

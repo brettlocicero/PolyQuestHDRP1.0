@@ -24,6 +24,7 @@ public class NavMeshWalkerAI : MonoBehaviour
     void Start () 
     {
         agent = GetComponent<NavMeshAgent>();
+        target = PlayerInstance.instance.transform;
     }
 
     void Update ()

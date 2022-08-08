@@ -11,9 +11,20 @@ public class PlaceObjEditor : Editor
         DrawDefaultInspector();
 
         ObjectPlacer myScript = (ObjectPlacer)target;
+
         if (GUILayout.Button("Generate"))
         {
             myScript.Generate();
+        }
+
+        if (GUILayout.Button("Trim Missing Objects"))
+        {
+            myScript.TrimMissingObjs();
+        }
+
+        if (GUILayout.Button("Delete Childless Objects From Scene"))
+        {
+            myScript.DeleteChildlessObjs();
         }
     }
 }
