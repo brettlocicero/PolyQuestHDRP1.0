@@ -29,6 +29,7 @@ public class RoomManager : MonoBehaviour
         CharacterController player = PlayerInstance.instance.GetComponent<CharacterController>();
         player.enabled = false;
         player.transform.position = room.GetComponent<Room>().playerSpawnPos.position;
+        player.transform.rotation = room.GetComponent<Room>().playerSpawnPos.rotation;
         player.enabled = true;
     }
 }

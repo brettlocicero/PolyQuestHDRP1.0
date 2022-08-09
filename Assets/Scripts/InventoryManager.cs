@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager instance;
+    void Awake () => instance = this;
+
     [SerializeField] InventorySlot[] slots;
+    public Transform itemPanel;
 
     public void AddItem (Item item) 
     {

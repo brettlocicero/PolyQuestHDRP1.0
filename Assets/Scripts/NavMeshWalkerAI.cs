@@ -14,6 +14,7 @@ public class NavMeshWalkerAI : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] float health = 30f;
+    [SerializeField] float engageDistance = 20f;
 
     [Header("Attack Info")]
     [SerializeField] Attack[] attacks;
@@ -29,7 +30,9 @@ public class NavMeshWalkerAI : MonoBehaviour
 
     void Update ()
     {
-        if (!inAttack && Vector3.Distance(target.position, transform.position) > agent.stoppingDistance) 
+        float dist = Vector3.Distance(target.position, transform.position);
+
+        if (!inAttack && dist > agent.stoppingDistance && dist <= engageDistance) 
         {
             agent.SetDestination(target.position);
             anim.SetBool("Walking", true);
