@@ -30,9 +30,16 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             if (eventData.pointerEnter.TryGetComponent(out InventorySlot slot)) 
             {
+                print("slot");
                 transform.SetParent(slot.transform);
                 transform.localPosition = Vector3.zero;
                 oldSlot = slot.transform;
+            }
+
+            else 
+            {
+                transform.SetParent(oldSlot);
+                transform.localPosition = Vector3.zero;
             }
         }
 

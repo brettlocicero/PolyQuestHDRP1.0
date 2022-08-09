@@ -41,6 +41,8 @@ public class FirstPersonController : MonoBehaviour
     public float footstepInterval = 0.5f;
     float footstepCounter;
 
+    bool lockMouselook;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -57,6 +59,8 @@ public class FirstPersonController : MonoBehaviour
 
     void Look ()
     {
+        if (lockMouselook) return;
+
         //get the mouse inpuit axis values
         float xInput = Input.GetAxisRaw("Mouse X") * mouseSensitivity;
         float yInput = Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
@@ -119,5 +123,15 @@ public class FirstPersonController : MonoBehaviour
             GetComponent<AudioSource>().PlayOneShot(footsteps[Random.Range(0, footsteps.Length)]);
             footstepCounter = 0f;
         }
+    }
+
+    public void LockMouselook () 
+    {
+        lockMouselook = true;
+    }
+
+    public void UnlockMouselook () 
+    {
+        lockMouselook = false;
     }
 }
