@@ -7,13 +7,11 @@ public class Item : ScriptableObject
 {
     [Header("Info")]
     public string itemName;
-    public int damage;
-    public float swingSpeed;
     [TextArea] public string itemDesc;
     public Sprite sprite;
 
     [Header("Stats")]
-    public float dmg;
+    public float damage;
     public float attackSpeed;
     public float range;
     public int rarity;
