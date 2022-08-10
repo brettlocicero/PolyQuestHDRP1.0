@@ -16,4 +16,5 @@ public class Item : ScriptableObject
     public float dmg;
     public float attackSpeed;
     public float range;
+    public int rarity;
 }

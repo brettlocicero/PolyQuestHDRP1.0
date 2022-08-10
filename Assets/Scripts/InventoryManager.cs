@@ -23,6 +23,9 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] GameObject inventoryCam;
     [SerializeField] GameObject[] playerModelWeapons;
 
+    [Header("Rarities")]
+    public Color[] rarityColors;
+
     [HideInInspector] public bool open;
     float targetAlpha;
     FirstPersonController fpc;
@@ -39,7 +42,7 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab)) 
         {
             open = !open;
-            inventoryCam.SetActive(open);
+            //inventoryCam.SetActive(open);
         }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

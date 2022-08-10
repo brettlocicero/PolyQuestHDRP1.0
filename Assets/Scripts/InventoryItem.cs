@@ -11,6 +11,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public Item mainItem;
     public Transform oldSlot;
+    [SerializeField] Image img;
+    [SerializeField] Image rarityImg;
 
     public void OnPointerEnter (PointerEventData eventData) 
     {
@@ -59,6 +61,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void UpdateItemDisplay (Item item) 
     {
         mainItem = item;
-        GetComponent<Image>().sprite = item.sprite;
+        img.sprite = item.sprite;
+        rarityImg.color = InventoryManager.instance.rarityColors[item.rarity];
     }
 }

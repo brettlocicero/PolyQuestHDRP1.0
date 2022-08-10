@@ -18,5 +18,7 @@ MonoBehaviour:
   itemDesc: Now an old relic, this rusty iron sword used to gleam in battle. Once
     wielded by the ancient Polyopian Sentinels to guard the High Emperor, it has
     been roughened by time, but still makes for a good weapon.
-  sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  bgImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: 3715e73b630eb0540913cb7d6b28c48a, type: 3}
+  dmg: 0
+  attackSpeed: 0
+  range: 0

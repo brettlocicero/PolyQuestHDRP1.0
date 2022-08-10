@@ -16,7 +16,8 @@ MonoBehaviour:
   damage: 0
   swingSpeed: 0
   itemDesc: 
-  sprite: {fileID: 21300000, guid: fa6c3b1bbebd94d4d8564642e71c3427, type: 3}
+  sprite: {fileID: 21300000, guid: 979ad48da26bef64d9939ad606498a50, type: 3}
   dmg: 0
   attackSpeed: 0
   range: 0
+  rarity: 2

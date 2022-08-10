@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 1.573921, g: 0.5669093, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 1.5846186, g: 0.5700054, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4703,7 +4703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd9c25fca94041dea692e10882a5fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iItem: {fileID: 5629423749603198408, guid: 7ead0c18da57346fc8bf4308a4639639, type: 3}
+  iItem: {fileID: 7231621775434537536, guid: 1fc7e437fa2892349bca6404b5eec173, type: 3}
   slots:
   - {fileID: 107627010}
   - {fileID: 2087710937}
@@ -4728,6 +4728,11 @@ MonoBehaviour:
   playerModelWeapons:
   - {fileID: 7559354995025108856}
   - {fileID: 551453537}
+  rarityColors:
+  - {r: 1, g: 0.7094675, b: 0, a: 0.14901961}
+  - {r: 0, g: 1, b: 0.12074661, a: 0.14901961}
+  - {r: 0, g: 0.5594592, b: 1, a: 0.14901961}
+  - {r: 1, g: 0, b: 0, a: 0.14901961}
   open: 0
 --- !u!114 &1262285099
 MonoBehaviour:
@@ -5701,7 +5706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1552239662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5726,9 +5731,9 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
-  m_Antialiasing: 1
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
-  m_StopNaN: 0
+  m_StopNaN: 1
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
@@ -5744,7 +5749,7 @@ Camera:
   m_GameObject: {fileID: 1552239661}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -5759,7 +5764,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -6901,7 +6906,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773851, y: 1}
+    m_SensorSize: {x: 1.7775701, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
