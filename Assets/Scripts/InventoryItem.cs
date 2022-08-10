@@ -4,13 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler
 {
     InventoryManager im;
     void Start () => im = InventoryManager.instance;
 
-    public Item item;
+    public Item mainItem;
     public Transform oldSlot;
+
+    public void OnPointerEnter (PointerEventData eventData) 
+    {
+        im.UpdateItemInfoPanel(mainItem);
+    }
 
     public void OnBeginDrag (PointerEventData eventData) 
     {
@@ -30,7 +35,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             if (eventData.pointerEnter.TryGetComponent(out InventorySlot slot)) 
             {
-                print("slot");
                 transform.SetParent(slot.transform);
                 transform.localPosition = Vector3.zero;
                 oldSlot = slot.transform;
@@ -50,5 +54,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         
         GetComponent<Image>().raycastTarget = true;
+    }
+
+    public void UpdateItemDisplay (Item item) 
+    {
+        mainItem = item;
+        GetComponent<Image>().sprite = item.sprite;
     }
 }

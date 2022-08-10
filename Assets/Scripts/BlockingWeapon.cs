@@ -41,6 +41,8 @@ public class BlockingWeapon : MonoBehaviour
 
     void Update ()
     {
+        if (InventoryManager.instance.open) return;
+
         if (Input.GetMouseButton(1)) 
         {
             fpc.movementSpeed = blockingMoveSpeed;

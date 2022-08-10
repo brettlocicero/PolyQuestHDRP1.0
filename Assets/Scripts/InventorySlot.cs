@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Item item;
     public bool empty = true;
     [SerializeField] Image slotHighlight;
 
@@ -18,13 +17,5 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit (PointerEventData eventData) 
     {
         slotHighlight.color = Color.black;
-    }
-
-    public void PlaceInSlot (Item newItem)
-    {
-        if (!empty) return;
-
-        item = newItem;
-        empty = false;
     }
 }

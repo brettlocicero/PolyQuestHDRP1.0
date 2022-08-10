@@ -76,6 +76,8 @@ public class MeleeWeapon : MonoBehaviour
             if (blockingWeapon.blocking) return;
 
         swingCounter += Time.deltaTime;
+
+        if (InventoryManager.instance.open) return;
         
         if (Input.GetMouseButtonDown(0) && swingCounter >= swordSwingMin) 
         {
