@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public bool empty = true;
     [SerializeField] Image slotHighlight;
+    public Item item;
 
     public void OnPointerEnter (PointerEventData eventData) 
     {

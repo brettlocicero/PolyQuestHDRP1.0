@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] InventorySlot[] slots;
     public Transform itemPanel;
     [SerializeField] CanvasGroup inventoryCanvasGroup;
+    [SerializeField] CanvasGroup mainHUDCanvasGroup;
 
     [Header("Item Info Panel")]
     [SerializeField] TextMeshProUGUI itemNameText;
@@ -27,7 +28,8 @@ public class InventoryManager : MonoBehaviour
     public Color[] rarityColors;
 
     [HideInInspector] public bool open;
-    float targetAlpha;
+    float targetAlphaInven;
+    float targetAlphaMainHUD;
     FirstPersonController fpc;
 
     void Start () 
@@ -37,28 +39,33 @@ public class InventoryManager : MonoBehaviour
 
     void Update () 
     {
-        inventoryCanvasGroup.alpha = Mathf.Lerp(inventoryCanvasGroup.alpha, targetAlpha, 10f * Time.deltaTime);
+        inventoryCanvasGroup.alpha = Mathf.Lerp(inventoryCanvasGroup.alpha, targetAlphaInven, 10f * Time.deltaTime);
+        mainHUDCanvasGroup.alpha = Mathf.Lerp(mainHUDCanvasGroup.alpha, targetAlphaMainHUD, 10f * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Tab)) 
         {
             open = !open;
-            //inventoryCam.SetActive(open);
+            inventoryCam.SetActive(open);
         }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         if (open) 
         {
-            targetAlpha = 1f;
+            targetAlphaInven = 1f;
+            targetAlphaMainHUD = 0f;
             inventoryCanvasGroup.blocksRaycasts = true;
+            mainHUDCanvasGroup.blocksRaycasts = false;
             CursorManager.UnlockCursor();
             fpc.LockMouselook();
         }
 
         else 
         {
-            targetAlpha = 0f;
+            targetAlphaInven = 0f;
+            targetAlphaMainHUD = 1f;
             inventoryCanvasGroup.blocksRaycasts = false;
+            mainHUDCanvasGroup.blocksRaycasts = true;
             CursorManager.LockCursor();
             fpc.UnlockMouselook();
         }
@@ -75,8 +82,10 @@ public class InventoryManager : MonoBehaviour
             itemObj.transform.SetParent(slot.transform);
             itemObj.transform.localPosition = Vector3.zero;
             itemObj.transform.localScale = Vector3.one;
+            slot.item = item;
             
             slot.empty = false;
+            QuickselectManager.instance.UpdateSlotSprites();
             return;
         }
     }

@@ -46,7 +46,7 @@ public class MeleeWeapon : MonoBehaviour
         BasicAnimation();
         SwordSwing();
     }
-
+    
     void BasicAnimation () 
     {
         // check for mid-air anim
@@ -76,7 +76,6 @@ public class MeleeWeapon : MonoBehaviour
             if (blockingWeapon.blocking) return;
 
         swingCounter += Time.deltaTime;
-
         if (InventoryManager.instance.open) return;
         
         if (Input.GetMouseButtonDown(0) && swingCounter >= swordSwingMin) 
@@ -84,6 +83,7 @@ public class MeleeWeapon : MonoBehaviour
             StartCoroutine(SwingDebuffs());
             swingAnim.Rewind(basicAttacks[comboIndex].name);
             swingAnim.Play(basicAttacks[comboIndex].name);
+            QuickselectManager.instance.DisableQuickselect(1.5f);
             cs.ShakeCamera(shakeAmt, shakeTime, shakeFreq, 80);
 
             comboIndex++;

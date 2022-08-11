@@ -37,24 +37,26 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             if (eventData.pointerEnter.TryGetComponent(out InventorySlot slot)) 
             {
-                transform.SetParent(slot.transform);
-                transform.localPosition = Vector3.zero;
-                oldSlot = slot.transform;
-            }
+                if (slot.empty) 
+                {
+                    transform.SetParent(slot.transform);
+                    transform.localPosition = Vector3.zero;
+                    oldSlot.GetComponent<InventorySlot>().empty = true;
+                    oldSlot.GetComponent<InventorySlot>().item = null;
+                    oldSlot = slot.transform;
+                    slot.empty = false;
+                    GetComponent<Image>().raycastTarget = true;
 
-            else 
-            {
-                transform.SetParent(oldSlot);
-                transform.localPosition = Vector3.zero;
+                    slot.item = mainItem;
+
+                    QuickselectManager.instance.UpdateSlotSprites();
+                    return;
+                }
             }
         }
 
-        else 
-        {
-            transform.SetParent(oldSlot);
-            transform.localPosition = Vector3.zero;
-        }
-        
+        transform.SetParent(oldSlot);
+        transform.localPosition = Vector3.zero;
         GetComponent<Image>().raycastTarget = true;
     }
 

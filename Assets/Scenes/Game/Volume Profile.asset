@@ -28,31 +28,6 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &-2566919697526902326
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
-  m_Name: MotionBlur
-  m_EditorClassIdentifier: 
-  active: 0
-  mode:
-    m_OverrideState: 0
-    m_Value: 0
-  quality:
-    m_OverrideState: 1
-    m_Value: 0
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.403
-  clamp:
-    m_OverrideState: 1
-    m_Value: 0.05
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +45,6 @@ MonoBehaviour:
   - {fileID: 4123435683378940282}
   - {fileID: -6866154804044962271}
   - {fileID: 4610119539938712468}
-  - {fileID: -2566919697526902326}
   - {fileID: 88715324034525868}
 --- !u!114 &88715324034525868
 MonoBehaviour:
@@ -89,14 +63,14 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 2
   gaussianStart:
-    m_OverrideState: 0
-    m_Value: 10
+    m_OverrideState: 1
+    m_Value: 0
   gaussianEnd:
-    m_OverrideState: 0
-    m_Value: 30
+    m_OverrideState: 1
+    m_Value: 5
   gaussianMaxRadius:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 1.5
   highQualitySampling:
     m_OverrideState: 0
     m_Value: 0
@@ -105,10 +79,10 @@ MonoBehaviour:
     m_Value: 0.75
   aperture:
     m_OverrideState: 0
-    m_Value: 5.6
+    m_Value: 1
   focalLength:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 300
   bladeCount:
     m_OverrideState: 0
     m_Value: 3
@@ -117,7 +91,7 @@ MonoBehaviour:
     m_Value: 1
   bladeRotation:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 180
 --- !u!114 &2913346549053004903
 MonoBehaviour:
   m_ObjectHideFlags: 3
