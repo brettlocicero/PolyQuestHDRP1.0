@@ -4,19 +4,31 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     InventoryManager im;
-    void Start () => im = InventoryManager.instance;
+    void Start () 
+    {
+        im = InventoryManager.instance;
+        infoPanelCG = im.infoPanelCanvasGroup;
+    }
 
     public Item mainItem;
     public Transform oldSlot;
     [SerializeField] Image img;
     [SerializeField] Image rarityImg;
 
+    CanvasGroup infoPanelCG;
+
     public void OnPointerEnter (PointerEventData eventData) 
     {
         im.UpdateItemInfoPanel(mainItem);
+        infoPanelCG.alpha = 1f;
+    }
+
+    public void OnPointerExit (PointerEventData eventData) 
+    {
+        infoPanelCG.alpha = 0f;
     }
 
     public void OnBeginDrag (PointerEventData eventData) 
@@ -43,6 +55,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     transform.localPosition = Vector3.zero;
                     oldSlot.GetComponent<InventorySlot>().empty = true;
                     oldSlot.GetComponent<InventorySlot>().item = null;
+
+                    if (oldSlot.GetComponent<InventorySlot>().quickSelectSlot)
+                         QuickselectManager.instance.DraggedSelectedItemOut();
+
                     oldSlot = slot.transform;
                     slot.empty = false;
                     GetComponent<Image>().raycastTarget = true;

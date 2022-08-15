@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class InventoryManager : MonoBehaviour
     public Transform itemPanel;
     [SerializeField] CanvasGroup inventoryCanvasGroup;
     [SerializeField] CanvasGroup mainHUDCanvasGroup;
+    [SerializeField] Volume postProcessing;
+    public CanvasGroup infoPanelCanvasGroup;
 
     [Header("Item Info Panel")]
     [SerializeField] TextMeshProUGUI itemNameText;
@@ -31,10 +35,12 @@ public class InventoryManager : MonoBehaviour
     float targetAlphaInven;
     float targetAlphaMainHUD;
     FirstPersonController fpc;
+    DepthOfField dof;
 
     void Start () 
     {
         fpc = PlayerInstance.instance.GetComponent<FirstPersonController>();
+        postProcessing.profile.TryGet(out dof);
     }
 
     void Update () 
@@ -46,6 +52,7 @@ public class InventoryManager : MonoBehaviour
         {
             open = !open;
             inventoryCam.SetActive(open);
+            dof.active = open;
         }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
