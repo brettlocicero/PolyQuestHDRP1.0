@@ -2142,6 +2142,7 @@ GameObject:
   - component: {fileID: 5247870129256847335}
   - component: {fileID: 7337258474159717057}
   - component: {fileID: 234907837}
+  - component: {fileID: 4461899332735418648}
   m_Layer: 0
   m_Name: Bandit Animator
   m_TagString: Untagged
@@ -2202,6 +2203,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDisplay: {fileID: 1865429380377440389, guid: 26d8346b944a8944e88f97352505eee4, type: 3}
   attackCenter: {fileID: 1343630753}
+--- !u!114 &4461899332735418648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511903858694092136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8ca6afe5630f545b8c40f63e50f11c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 8073741549285204120}
+  methodName: TryToHurtPlayer
 --- !u!1 &7739155621282099602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,7 +2487,7 @@ Transform:
   m_Children:
   - {fileID: 5247870129256847335}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4525852425183235673
 MonoBehaviour:
@@ -2491,7 +2506,9 @@ MonoBehaviour:
   anim: {fileID: 7337258474159717057}
   ragdollFX: {fileID: 166013280796995489, guid: cd69b9a4310fb4e33815d075e98037e1, type: 3}
   takeDMGFX: {fileID: 8233048021482714473, guid: f2ad678848e694e1c8ea5fcb8259f9d8, type: 3}
-  health: 15
+  health: 30
+  engageDistance: 20
+  dmg: 8
   attacks:
   - _name: Bandit Attack 1
     attackTime: 1.5

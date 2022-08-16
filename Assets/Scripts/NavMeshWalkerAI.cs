@@ -13,14 +13,16 @@ public class NavMeshWalkerAI : MonoBehaviour
     [SerializeField] GameObject takeDMGFX;
 
     [Header("Stats")]
-    [SerializeField] float health = 30f;
+    [SerializeField] int health = 30;
     [SerializeField] float engageDistance = 20f;
+    [SerializeField] int dmg = 15;
 
     [Header("Attack Info")]
     [SerializeField] Attack[] attacks;
 
     bool inAttack;
     bool inRange;
+    bool playerInTrigger;
 
     void Start () 
     {
@@ -62,10 +64,19 @@ public class NavMeshWalkerAI : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter (Collider col) 
+    {
+        if (col.CompareTag("Player"))
+            playerInTrigger = true;
+    }
+
     void OnTriggerExit (Collider col) 
     {
         if (col.CompareTag("Player")) 
+        {
             inRange = false;
+            playerInTrigger = false;
+        }
     }
 
     IEnumerator PlayAttack (Attack attack) 
@@ -79,6 +90,12 @@ public class NavMeshWalkerAI : MonoBehaviour
         yield return new WaitForSeconds(attack.attackTime);
 
         inAttack = false;
+    }
+
+    public void TryToHurtPlayer () 
+    {
+        if (!playerInTrigger) return;
+        PlayerInstance.instance.TakeDamage(dmg);
     }
 
     public void TakeDamage (object[] data) 
