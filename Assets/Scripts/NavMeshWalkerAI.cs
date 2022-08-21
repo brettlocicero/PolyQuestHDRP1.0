@@ -8,6 +8,7 @@ public class NavMeshWalkerAI : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField] Transform target;
     [SerializeField] Transform neckLookAt;
+    [SerializeField] Vector2 lookAtClamp;
     [SerializeField] Animator anim;
     [SerializeField] GameObject ragdollFX;
     [SerializeField] GameObject takeDMGFX;
@@ -46,12 +47,15 @@ public class NavMeshWalkerAI : MonoBehaviour
             anim.SetBool("Idle", true);
             anim.SetBool("Walking", false);
         }
+        
+        // for lookat
+        if (dist <= engageDistance) NeckLookAtPlayer();
     }
 
-    void FixedUpdate () 
+    void NeckLookAtPlayer () 
     {
         Vector3 dir = target.position - transform.position;
-        neckLookAt.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 999f * Time.deltaTime);
+        neckLookAt.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 100f * Time.deltaTime);
     }
 
     void OnTriggerStay (Collider col) 

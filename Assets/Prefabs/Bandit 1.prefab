@@ -2503,6 +2503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   neckLookAt: {fileID: 639479263340463055}
+  lookAtClamp: {x: 0, y: 0}
   anim: {fileID: 7337258474159717057}
   ragdollFX: {fileID: 166013280796995489, guid: cd69b9a4310fb4e33815d075e98037e1, type: 3}
   takeDMGFX: {fileID: 8233048021482714473, guid: f2ad678848e694e1c8ea5fcb8259f9d8, type: 3}
@@ -2523,7 +2524,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8073741549285204120}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1.5
   m_Speed: 6
   m_Acceleration: 999
   avoidancePriority: 50
