@@ -49,13 +49,19 @@ public class NavMeshWalkerAI : MonoBehaviour
         }
         
         // for lookat
-        if (dist <= engageDistance) NeckLookAtPlayer();
+        if (dist <= engageDistance) 
+            NeckLookAtPlayer();
     }
 
     void NeckLookAtPlayer () 
     {
-        Vector3 dir = target.position - transform.position;
-        neckLookAt.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), 100f * Time.deltaTime);
+        Vector3 dir = target.position - neckLookAt.position;
+        neckLookAt.rotation = Quaternion.Lerp(neckLookAt.rotation, Quaternion.LookRotation(dir), 15f * Time.deltaTime);
+
+        /*float rawY = neckLookAt.localEulerAngles.y;
+        float clampedY = Mathf.Clamp(rawY, lookAtClamp.x, lookAtClamp.y);
+        Vector3 eulerAngs = new Vector3(neckLookAt.localEulerAngles.x, clampedY, neckLookAt.localEulerAngles.z);
+        neckLookAt.localEulerAngles = eulerAngs;*/
     }
 
     void OnTriggerStay (Collider col) 

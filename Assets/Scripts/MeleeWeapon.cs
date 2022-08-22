@@ -13,7 +13,6 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] Transform attackSphereCenter;
     [SerializeField] LayerMask impactLayerMask;
     [SerializeField] AudioClip[] comboSounds;
-    [SerializeField] AudioClip hitSound;
     [SerializeField] float swingDebuffTime = 0.4f;
     [SerializeField] float swingMoveSpeed = 5f;
     int comboIndex;
@@ -102,8 +101,6 @@ public class MeleeWeapon : MonoBehaviour
         Transform cam = Camera.main.gameObject.transform;
         if (Physics.Raycast(cam.position, cam.forward, out hit, attackRadius, impactLayerMask)) 
         {
-            GetComponent<AudioSource>().PlayOneShot(hitSound);
-
             object[] data = new object[2];
             data[0] = damage;
             data[1] = hit.point;
