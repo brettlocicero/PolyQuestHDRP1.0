@@ -39,11 +39,11 @@ Material:
     m_Floats:
     - Vector1_13eb6b41ab9b444a85f2b379ca71d54e: 1
     - Vector1_4fb16be4c2754ab3bf361988f8dcc121: 1
-    - Vector1_6bd8ecdc88b44420b6ebdecc22a47468: 1
+    - Vector1_6bd8ecdc88b44420b6ebdecc22a47468: 0.5
     - Vector1_c40c973b748340049724c57a95790c58: 0.5
     - Vector1_d4937479924645548d6088da42e4b6b4: 5
     - Vector1_ed631667bf7c4d6595a01d8b200688e1: 0.5
-    - Vector1_f41de7c866a24fa8a1637917edf388ce: 500
+    - Vector1_f41de7c866a24fa8a1637917edf388ce: 5000
     - Vector1_f9ccd9ba76d44ce78a7c6d905c32a77d: 1
     - _QueueControl: 0
     - _QueueOffset: 0
