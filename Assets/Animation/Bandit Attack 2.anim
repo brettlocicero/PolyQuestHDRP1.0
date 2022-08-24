@@ -5447,6 +5447,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.56666666
+    functionName: SetLeftSideAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.5833333
     functionName: Call
     data: 
@@ -5461,6 +5468,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.3166667
+    functionName: SetRightSideAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.3333334
     functionName: Call
     data: 
@@ -5470,6 +5484,13 @@ AnimationClip:
     messageOptions: 0
   - time: 2.0666666
     functionName: TopAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.4333334
+    functionName: SetMiddleAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

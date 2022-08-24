@@ -16,6 +16,9 @@ public class PlayerInstance : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] Animator screenFlashDMG;
 
+    [Header("Blocking")]
+    public string currentBlocking;
+
     void Start () 
     {
         health = maxHealth;

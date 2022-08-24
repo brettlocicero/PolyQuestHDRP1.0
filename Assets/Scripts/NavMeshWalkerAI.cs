@@ -24,6 +24,7 @@ public class NavMeshWalkerAI : MonoBehaviour
     bool inAttack;
     bool inRange;
     bool playerInTrigger;
+    [HideInInspector] public string attackSide;
 
     void Start () 
     {
@@ -104,7 +105,7 @@ public class NavMeshWalkerAI : MonoBehaviour
 
     public void TryToHurtPlayer () 
     {
-        if (!playerInTrigger) return;
+        if (!playerInTrigger || target.GetComponent<PlayerInstance>().currentBlocking == attackSide) return;
         PlayerInstance.instance.TakeDamage(dmg);
     }
 

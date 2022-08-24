@@ -13,18 +13,20 @@ public class BlockingWeapon : MonoBehaviour
     [SerializeField] float blockingSensFactor = 0.1f;
     [SerializeField] float directionSens = 0.5f;
 
-    [Space]
+    [Header("")]
     [SerializeField] CanvasGroup shieldGroup;
     [SerializeField] Transform leftBlock;
     [SerializeField] Transform middleBlock;
     [SerializeField] Transform rightBlock;
 
-    [Space]
+    [Header("")]
     [SerializeField] Color blockingColor;
     [SerializeField] Color inactiveColor;
 
     float cachedMoveSpeed;
     float cachedMouseSens;
+
+    PlayerInstance playerInstance;
 
     enum BlockState 
     {
@@ -37,6 +39,7 @@ public class BlockingWeapon : MonoBehaviour
     {
         cachedMoveSpeed = fpc.movementSpeed;
         cachedMouseSens = fpc.mouseSensitivity;
+        playerInstance = PlayerInstance.instance;
     }
 
     void Update ()
@@ -58,6 +61,7 @@ public class BlockingWeapon : MonoBehaviour
             fpc.mouseSensitivity = cachedMouseSens;
             shieldGroup.alpha = 0f;
             blocking = false;
+            playerInstance.currentBlocking = "None";
         }
     }
 
@@ -95,6 +99,8 @@ public class BlockingWeapon : MonoBehaviour
                 leftBlock.GetComponent<Image>().color = blockingColor;
                 middleBlock.GetComponent<Image>().color = inactiveColor;
                 rightBlock.GetComponent<Image>().color = inactiveColor;
+
+                playerInstance.currentBlocking = "Left";
                 break;
 
             case BlockState.Middle:
@@ -105,6 +111,8 @@ public class BlockingWeapon : MonoBehaviour
                 leftBlock.GetComponent<Image>().color = inactiveColor;
                 middleBlock.GetComponent<Image>().color = blockingColor;
                 rightBlock.GetComponent<Image>().color = inactiveColor;
+
+                playerInstance.currentBlocking = "Middle";
                 break;
 
             case BlockState.Right:
@@ -115,6 +123,8 @@ public class BlockingWeapon : MonoBehaviour
                 leftBlock.GetComponent<Image>().color = inactiveColor;
                 middleBlock.GetComponent<Image>().color = inactiveColor;
                 rightBlock.GetComponent<Image>().color = blockingColor;
+
+                playerInstance.currentBlocking = "Right";
                 break; 
         }
     }
