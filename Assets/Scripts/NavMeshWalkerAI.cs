@@ -105,7 +105,14 @@ public class NavMeshWalkerAI : MonoBehaviour
 
     public void TryToHurtPlayer () 
     {
-        if (!playerInTrigger || target.GetComponent<PlayerInstance>().currentBlocking == attackSide) return;
+        if (!playerInTrigger) return;
+
+        if (target.GetComponent<PlayerInstance>().currentBlocking == attackSide) 
+        {
+            PlayerInstance.instance.currentBlockingWeapon.TriggerBlock();
+            return;
+        }
+
         PlayerInstance.instance.TakeDamage(dmg);
     }
 

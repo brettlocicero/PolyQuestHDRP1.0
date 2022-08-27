@@ -76,11 +76,17 @@ public class QuickselectManager : MonoBehaviour
     {
         foreach (GameObject obj in weapons) 
         {
-            if (obj.name == item.itemName)
+            if (obj.name == item.itemName) 
+            {
                 obj.SetActive(true);
+
+                // check for blocking weapon comp
+                PlayerInstance.instance.currentBlockingWeapon = obj.GetComponent<BlockingWeapon>();
+            }
+
             else
                 obj.SetActive(false);
-        }    
+        }
     }
 
     public void DisableQuickselect (float t) 

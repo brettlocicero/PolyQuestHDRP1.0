@@ -17,12 +17,16 @@ public class PlayerInstance : MonoBehaviour
     [SerializeField] Animator screenFlashDMG;
 
     [Header("Blocking")]
+    public BlockingWeapon currentBlockingWeapon;
     public string currentBlocking;
+
+    CinemachineShake cs;
 
     void Start () 
     {
         health = maxHealth;
         UpdateHealthBarUI();
+        cs = CinemachineShake.instance;
     }
 
     public void TakeDamage (int dmg) 
@@ -30,6 +34,7 @@ public class PlayerInstance : MonoBehaviour
         health -= dmg;
         screenFlashDMG.SetTrigger("Take Damage");
         UpdateHealthBarUI();
+        cs.ShakeCamera(12f, 0.3f, 0.05f, 90);
     }
 
     void UpdateHealthBarUI () 

@@ -12,6 +12,8 @@ public class BlockingWeapon : MonoBehaviour
     [SerializeField] float blockingMoveSpeed = 3f;
     [SerializeField] float blockingSensFactor = 0.1f;
     [SerializeField] float directionSens = 0.5f;
+    [SerializeField] ParticleSystem sparks;
+    [SerializeField] Animation blockAnim;
 
     [Header("")]
     [SerializeField] CanvasGroup shieldGroup;
@@ -33,6 +35,12 @@ public class BlockingWeapon : MonoBehaviour
         Left,
         Middle,
         Right
+    }
+
+    public void TriggerBlock () 
+    {
+        sparks.Play();
+        blockAnim.Play("Block Animation");
     }
 
     void Start () 
