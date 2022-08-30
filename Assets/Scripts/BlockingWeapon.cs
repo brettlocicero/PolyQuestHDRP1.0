@@ -16,6 +16,10 @@ public class BlockingWeapon : MonoBehaviour
     [SerializeField] Animation blockAnim;
 
     [Header("")]
+    [SerializeField] Transform weaponShift;
+    [SerializeField] DisplayBlock[] displayBlocks;
+
+    [Header("")]
     [SerializeField] CanvasGroup shieldGroup;
     [SerializeField] Transform leftBlock;
     [SerializeField] Transform middleBlock;
@@ -27,8 +31,11 @@ public class BlockingWeapon : MonoBehaviour
 
     float cachedMoveSpeed;
     float cachedMouseSens;
+    Vector3 reqBlockPos;
+    Vector3 reqBlockRot;
 
     PlayerInstance playerInstance;
+    CinemachineShake cs;
 
     enum BlockState 
     {
@@ -41,6 +48,7 @@ public class BlockingWeapon : MonoBehaviour
     {
         sparks.Play();
         blockAnim.Play("Block Animation");
+        cs.ShakeCamera(8f, 0.15f, 0.05f, 90);
     }
 
     void Start () 
@@ -48,6 +56,7 @@ public class BlockingWeapon : MonoBehaviour
         cachedMoveSpeed = fpc.movementSpeed;
         cachedMouseSens = fpc.mouseSensitivity;
         playerInstance = PlayerInstance.instance;
+        cs = CinemachineShake.instance;
     }
 
     void Update ()
@@ -70,7 +79,18 @@ public class BlockingWeapon : MonoBehaviour
             shieldGroup.alpha = 0f;
             blocking = false;
             playerInstance.currentBlocking = "None";
+
+            reqBlockPos = Vector3.zero;
+            reqBlockRot = Vector3.zero;
         }
+
+        UpdateBlockPosRot();
+    }
+
+    void UpdateBlockPosRot () 
+    {
+        transform.localPosition = Vector3.Lerp(transform.localPosition, reqBlockPos, 10f * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(reqBlockRot), 10f * Time.deltaTime);
     }
 
     void DirectionalBlocking () 
@@ -109,6 +129,9 @@ public class BlockingWeapon : MonoBehaviour
                 rightBlock.GetComponent<Image>().color = inactiveColor;
 
                 playerInstance.currentBlocking = "Left";
+
+                reqBlockPos = displayBlocks[0].pos;
+                reqBlockRot = displayBlocks[0].rot;
                 break;
 
             case BlockState.Middle:
@@ -121,6 +144,9 @@ public class BlockingWeapon : MonoBehaviour
                 rightBlock.GetComponent<Image>().color = inactiveColor;
 
                 playerInstance.currentBlocking = "Middle";
+
+                reqBlockPos = displayBlocks[1].pos;
+                reqBlockRot = displayBlocks[1].rot;
                 break;
 
             case BlockState.Right:
@@ -133,7 +159,17 @@ public class BlockingWeapon : MonoBehaviour
                 rightBlock.GetComponent<Image>().color = blockingColor;
 
                 playerInstance.currentBlocking = "Right";
+                
+                reqBlockPos = displayBlocks[2].pos;
+                reqBlockRot = displayBlocks[2].rot;
                 break; 
         }
     }
+}
+
+[System.Serializable]
+struct DisplayBlock 
+{
+    public Vector3 pos;
+    public Vector3 rot;
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 1.5768733, g: 0.5680711, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 1.58344, g: 0.56973886, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11055,6 +11055,14 @@ MonoBehaviour:
   directionSens: 0.8
   sparks: {fileID: 798173328}
   blockAnim: {fileID: 1561631821}
+  weaponShift: {fileID: 1154082000}
+  displayBlocks:
+  - pos: {x: -0.1, y: -0.19, z: -0.18}
+    rot: {x: 0, y: -21.01, z: 37.33}
+  - pos: {x: -0.18, y: -0.1, z: -0.12}
+    rot: {x: -12.11, y: -4.67, z: 14.84}
+  - pos: {x: -0.04, y: 0, z: 0}
+    rot: {x: 2.49, y: 15.35, z: -11.17}
   shieldGroup: {fileID: 569585935}
   leftBlock: {fileID: 797846372}
   middleBlock: {fileID: 553790419}
@@ -19380,7 +19388,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7776366, y: 1}
+    m_SensorSize: {x: 1.7775701, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -20470,7 +20478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &432978189321270989
 Transform:
   m_ObjectHideFlags: 0
@@ -20478,7 +20486,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432978189321270988}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20641,6 +20649,14 @@ MonoBehaviour:
   directionSens: 0.8
   sparks: {fileID: 1350643550}
   blockAnim: {fileID: 432978190906904762}
+  weaponShift: {fileID: 432978189321270989}
+  displayBlocks:
+  - pos: {x: -0.1, y: -0.19, z: -0.18}
+    rot: {x: 0, y: -21.01, z: 37.33}
+  - pos: {x: -0.18, y: -0.1, z: -0.12}
+    rot: {x: -12.11, y: -4.67, z: 14.84}
+  - pos: {x: -0.04, y: 0, z: 0}
+    rot: {x: 2.49, y: 15.35, z: -11.17}
   shieldGroup: {fileID: 569585935}
   leftBlock: {fileID: 797846372}
   middleBlock: {fileID: 553790419}
@@ -21580,6 +21596,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: ea2c2a62bf35ba34f82f5f8a30b63453, type: 2}
   - {fileID: 7400000, guid: c8cf48f3b6c96c043a4b2472dd2505c5, type: 2}
+  - {fileID: 7400000, guid: 49d1ed3a9caf141e89cf8c929dd388af, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
