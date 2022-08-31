@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 6702197796446459043}
   - component: {fileID: 1665380429745640991}
   m_Layer: 0
-  m_Name: Connecting Pathway
+  m_Name: Pathway 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -24228,7 +24228,7 @@ GameObject:
   - component: {fileID: -6207257202063285292}
   - component: {fileID: 2235724929148701259}
   m_Layer: 0
-  m_Name: Test Connecting Room
+  m_Name: Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
