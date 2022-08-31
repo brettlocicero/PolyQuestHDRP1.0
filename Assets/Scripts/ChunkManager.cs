@@ -18,14 +18,16 @@ public class ChunkManager : MonoBehaviour
 
     public void SpawnChunk ()
     {
-        GameObject chunkObj = Instantiate(chunks[0].gameObject, connectorSpawnPoint.position, Quaternion.identity);
+        Chunk chunk = chunks[Random.Range(0, chunks.Length)];
+        GameObject chunkObj = Instantiate(chunk.gameObject, connectorSpawnPoint.position, Quaternion.identity);
         mostRecentChunk = chunkObj.GetComponent<Chunk>();
         SpawnConnector();
     }
 
     void SpawnConnector () 
     {
-        GameObject path = Instantiate(connectors[0].gameObject, mostRecentChunk.connectorSpawnPoint.position, Quaternion.identity);
-        connectorSpawnPoint = path.GetComponent<Path>().connectorSpawnPoint;
+        Path path = connectors[Random.Range(0, connectors.Length)];
+        GameObject pathObj = Instantiate(path.gameObject, mostRecentChunk.connectorSpawnPoint.position, Quaternion.identity);
+        connectorSpawnPoint = pathObj.GetComponent<Path>().connectorSpawnPoint;
     }
 }
