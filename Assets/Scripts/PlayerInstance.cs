@@ -10,6 +10,7 @@ public class PlayerInstance : MonoBehaviour
     
     public int maxHealth = 50;
     [SerializeField] int health = 50;
+    public int gold = 0;
 
     [Header("UI")]
     [SerializeField] Transform healthBar;
@@ -41,5 +42,11 @@ public class PlayerInstance : MonoBehaviour
     {
         healthText.text = health + "/" + maxHealth;
         healthBar.localScale = new Vector3((float)health / (float)maxHealth, 1f, 1f);
+    }
+
+    public void AddGold (int amt) 
+    {
+        gold += amt;
+        print("Player given " + gold + " gold.");
     }
 }

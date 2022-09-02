@@ -31,6 +31,10 @@ public class InventoryManager : MonoBehaviour
     [Header("Rarities")]
     public Color[] rarityColors;
 
+    [Header("Pickup Notifications")]
+    [SerializeField] Transform layoutGroup;
+    [SerializeField] PickupNotifObj baseNotifItem;
+
     [HideInInspector] public bool open;
     float targetAlphaInven;
     float targetAlphaMainHUD;
@@ -80,6 +84,8 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem (Item item) 
     {
+        TriggerPickupNotif(item.sprite, item.name);
+
         foreach (InventorySlot slot in slots) 
         {
             if (!slot.empty) continue;
@@ -109,5 +115,15 @@ public class InventoryManager : MonoBehaviour
             else
                 obj.SetActive(false);
         }
+    }
+
+    public void TriggerPickupNotif (Sprite pic, string notifName = "Undefined Item") 
+    {
+        var obj = Instantiate(baseNotifItem.gameObject, Vector3.zero, Quaternion.identity);
+        obj.transform.SetParent(layoutGroup);
+        obj.transform.localScale = Vector3.one;
+        obj.GetComponent<PickupNotifObj>().UpdateItemNotifObj(pic, notifName);
+
+        Destroy(obj, 4.017f);
     }
 }
