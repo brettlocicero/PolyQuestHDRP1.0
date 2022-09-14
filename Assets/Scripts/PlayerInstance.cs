@@ -11,6 +11,7 @@ public class PlayerInstance : MonoBehaviour
     public int maxHealth = 50;
     [SerializeField] int health = 50;
     public int gold = 0;
+    [SerializeField] Sprite goldPic;
 
     [Header("UI")]
     [SerializeField] Transform healthBar;
@@ -48,5 +49,6 @@ public class PlayerInstance : MonoBehaviour
     {
         gold += amt;
         print("Player given " + gold + " gold.");
+        InventoryManager.instance.TriggerPickupNotif(goldPic, "gold");
     }
 }
