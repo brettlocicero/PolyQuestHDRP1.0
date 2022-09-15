@@ -49,6 +49,6 @@ public class PlayerInstance : MonoBehaviour
     {
         gold += amt;
         print("Player given " + gold + " gold.");
-        InventoryManager.instance.TriggerPickupNotif(goldPic, "gold");
+        InventoryManager.instance.TriggerPickupNotif(goldPic, "+" + amt + " gold");
     }
 }

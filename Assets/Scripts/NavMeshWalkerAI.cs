@@ -12,6 +12,7 @@ public class NavMeshWalkerAI : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] GameObject ragdollFX;
     [SerializeField] GameObject takeDMGFX;
+    [SerializeField] GameObject goldPickupObj;
 
     [Header("Stats")]
     [SerializeField] int health = 30;
@@ -20,16 +21,19 @@ public class NavMeshWalkerAI : MonoBehaviour
 
     [Header("Attack Info")]
     [SerializeField] Attack[] attacks;
+    [SerializeField] AudioClip[] attackSounds;
 
     bool inAttack;
     bool inRange;
     bool playerInTrigger;
     [HideInInspector] public string attackSide;
+    [SerializeField] AudioSource aud;
 
     void Start () 
     {
         agent = GetComponent<NavMeshAgent>();
         target = PlayerInstance.instance.transform;
+        aud = GetComponent<AudioSource>();
     }
 
     void Update ()
@@ -105,6 +109,9 @@ public class NavMeshWalkerAI : MonoBehaviour
 
     public void TryToHurtPlayer () 
     {
+        aud.pitch = Random.Range(0.7f, 0.9f);
+        aud.PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)]);
+
         if (!playerInTrigger) return;
 
         if (target.GetComponent<PlayerInstance>().currentBlocking == attackSide) 
@@ -125,17 +132,20 @@ public class NavMeshWalkerAI : MonoBehaviour
         Destroy(bloodFX, 1.5f);
 
         if (health <= 0) 
-        {
-            GameObject ragdoll = Instantiate(ragdollFX, transform.position, transform.rotation);
-            Rigidbody[] childRBs = ragdoll.GetComponentsInChildren<Rigidbody>();
+            Die(pos);
+    }
 
-            foreach (Rigidbody rb in childRBs) 
-            {
-                rb.AddExplosionForce(15f, pos, 5f, 1f, ForceMode.Impulse);
-            }
+    void Die (Vector3 pos) 
+    {
+        GameObject ragdoll = Instantiate(ragdollFX, transform.position, transform.rotation);
+        Rigidbody[] childRBs = ragdoll.GetComponentsInChildren<Rigidbody>();
 
-            Destroy(gameObject);
-        }
+        Instantiate(goldPickupObj, transform.position, transform.rotation);
+
+        foreach (Rigidbody rb in childRBs) 
+            rb.AddExplosionForce(15f, pos, 5f, 1f, ForceMode.Impulse);
+
+        Destroy(gameObject);
     }
 }
 
