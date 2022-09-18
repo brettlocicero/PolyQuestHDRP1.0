@@ -27,6 +27,7 @@ public class ShopItem : MonoBehaviour
             {
                 im.AddItem(itemToPurchase);
                 pi.DeductGold(cost);
+                pi.HideInfoText();
                 Destroy(gameObject);
             }
         }

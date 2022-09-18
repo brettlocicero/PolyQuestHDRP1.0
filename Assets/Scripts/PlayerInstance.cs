@@ -18,6 +18,7 @@ public class PlayerInstance : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] Animator screenFlashDMG;
     [SerializeField] TextMeshProUGUI subtitleInfoText;
+    [SerializeField] TextMeshProUGUI goldText;
 
     [Header("Blocking")]
     public BlockingWeapon currentBlockingWeapon;
@@ -30,6 +31,7 @@ public class PlayerInstance : MonoBehaviour
         health = maxHealth;
         UpdateHealthBarUI();
         cs = CinemachineShake.instance;
+        UpdateGoldText();
     }
 
     public void TakeDamage (int dmg) 
@@ -51,11 +53,15 @@ public class PlayerInstance : MonoBehaviour
         gold += amt;
         print("Player given " + gold + " gold.");
         InventoryManager.instance.TriggerPickupNotif(goldPic, "+" + amt + " gold");
+        UpdateGoldText();
     }
+
+    void UpdateGoldText () => goldText.text = gold.ToString();
 
     public void DeductGold (int amt) 
     {
         gold -= amt;
+        UpdateGoldText();
     }
 
     public void ShowInfoText (string t) 
