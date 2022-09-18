@@ -17,6 +17,7 @@ public class PlayerInstance : MonoBehaviour
     [SerializeField] Transform healthBar;
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] Animator screenFlashDMG;
+    [SerializeField] TextMeshProUGUI subtitleInfoText;
 
     [Header("Blocking")]
     public BlockingWeapon currentBlockingWeapon;
@@ -50,5 +51,21 @@ public class PlayerInstance : MonoBehaviour
         gold += amt;
         print("Player given " + gold + " gold.");
         InventoryManager.instance.TriggerPickupNotif(goldPic, "+" + amt + " gold");
+    }
+
+    public void DeductGold (int amt) 
+    {
+        gold -= amt;
+    }
+
+    public void ShowInfoText (string t) 
+    {
+        subtitleInfoText.gameObject.SetActive(true);
+        subtitleInfoText.text = t;
+    }
+
+    public void HideInfoText () 
+    {
+        subtitleInfoText.gameObject.SetActive(false);
     }
 }
