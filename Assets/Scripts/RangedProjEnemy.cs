@@ -6,10 +6,13 @@ public class RangedProjEnemy : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] float tickSpeed = 0.5f;
+    [SerializeField] Rigidbody proj;
+    [SerializeField] float fireRate = 1f;
 
     Rigidbody rb;
     Vector3 targetPos;
-    float counter;
+    float moveCounter;
+    float fireRateCounter;
 
     void Start ()
     {
@@ -17,30 +20,41 @@ public class RangedProjEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate ()
-    {
-        counter += Time.deltaTime;
-        if (counter >= tickSpeed)
+    void Update () 
+    { 
+        moveCounter += Time.deltaTime;
+        if (moveCounter >= tickSpeed)
             targetPos = PositionTick();
 
+        fireRateCounter += Time.deltaTime;
+        if (fireRateCounter >= fireRate)
+            ShootProj();
+    }
+
+    void FixedUpdate ()
+    {
         rb.MovePosition(transform.position + targetPos * Time.deltaTime);
     }
 
     Vector3 PositionTick () 
     {
         float dist = Vector3.Distance(target.position, transform.position);
-        Vector3 randomOffset, targetPos;
+        Vector3 targetPos;
 
         if (dist >= 10f) 
             targetPos = Vector3.Normalize(target.position - transform.position);
-
         else 
-        {
-            randomOffset = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), Random.Range(-2f, 2f));
-            targetPos = -Vector3.Normalize((target.position - transform.position)) + randomOffset;
-        }
+            targetPos = -Vector3.Normalize(target.position - transform.position);
 
-        counter = 0f;
+        moveCounter = 0f;
         return targetPos;
+    }
+
+    void ShootProj () 
+    {
+        Rigidbody p = Instantiate(proj, transform.position, Quaternion.identity) as Rigidbody;
+        p.transform.LookAt(target);
+        p.AddForce(p.transform.forward * 1000f);
+        fireRateCounter = 0f;
     }
 }

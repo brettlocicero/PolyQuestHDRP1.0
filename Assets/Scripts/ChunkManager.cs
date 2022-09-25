@@ -15,7 +15,7 @@ public class ChunkManager : MonoBehaviour
     [Header("")]
     [SerializeField] Region[] regions;
 
-    bool lastWasShop;
+    bool lastWasShop = true;
 
     void Awake () 
     {
@@ -47,9 +47,11 @@ public class ChunkManager : MonoBehaviour
             // spawn healing room
             else 
             {
-                chunk = regions[regionIndex].shopChunks[Random.Range(0, regions[regionIndex].shopChunks.Length)];
+                chunk = regions[regionIndex].healingRooms[Random.Range(0, regions[regionIndex].healingRooms.Length)];
                 chunkObj = Instantiate(chunk.gameObject, connectorSpawnPoint.position, Quaternion.identity);
             }
+
+            lastWasShop = !lastWasShop;
         }
 
         // spawn normal room
@@ -78,5 +80,6 @@ struct Region
     public string regionName;
     public Chunk[] chunks;
     public Chunk[] shopChunks;
+    public Chunk[] healingRooms;
     public Path[] connectors;
 }
