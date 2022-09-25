@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 1.5848023, g: 0.5700321, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 1.5845977, g: 0.5699898, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24806,7 +24806,7 @@ MonoBehaviour:
   - regionName: Cliffside Forest
     chunks:
     - {fileID: -6207257202063285292, guid: 0af41c536d49149c98d9fdb5f7629f2b, type: 3}
-    - {fileID: 2967102548929565768, guid: 916568f349bf44d46b988497ab5dfbd2, type: 3}
+    - {fileID: 1390455086371134535, guid: 916568f349bf44d46b988497ab5dfbd2, type: 3}
     - {fileID: 2880106247017966349, guid: d2445ef040525b842a240c6451476dcd, type: 3}
     shopChunks:
     - {fileID: 6323635429858063091, guid: b5e8a4b18af4aa647a97cceb299c9d3a, type: 3}
@@ -25764,7 +25764,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7779238, y: 1}
+    m_SensorSize: {x: 1.7773438, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
